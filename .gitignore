@@ -1,0 +1,5 @@
+.vs/
+target/debug/
+target/.rust_info.json
+target/rust_analyzer
+target/release/
