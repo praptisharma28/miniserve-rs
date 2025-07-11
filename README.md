@@ -17,3 +17,7 @@ http parser
 handler
 
 all of these will be running on a single thread
+
+- String and &str
+- string slicing helps in keeping memory lesser as we dont need to copy the whole string, think of string as something that stores length, capacity and ptr, while &str will store length and ptr
+
