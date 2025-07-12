@@ -21,3 +21,12 @@ all of these will be running on a single thread
 - String and &str
 - string slicing helps in keeping memory lesser as we dont need to copy the whole string, think of string as something that stores length, capacity and ptr, while &str will store length and ptr
 
+- the option enum:
+rust doesnot support null values, but it still want to express, using enum 
+
+pub enum Option<T> {
+    None, 
+    Some<T>
+}
+
+now we know how to express null values without the fear of null pointer exceptions
