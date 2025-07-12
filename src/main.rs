@@ -1,4 +1,6 @@
 use std::option::Option;
+use miniserver::Miniserver;
+use http::request::Request;
 fn main() {
     // let string = String::from("127.0.0.1:8080");//new is an associated function of Miniserver
     // let string_slice = &string[10..]; // this means give everything after the 10th byte
@@ -11,46 +13,51 @@ fn main() {
     // dbg!(string_borrow);
     // dbg!(string_literal);
 
-    let miniserver = Miniserver::new("127.0.0.1.8080".to_string());
+    let miniserver = Miniserver::new("127.0.0.1:8080".to_string());
     miniserver.run();
 }
-    // miniserver here is a struct
-struct Miniserver {
-    addr: String,
+// miniserver here is a struct
+
+mod miniserver {
+    pub struct Miniserver {
+        addr: String,
+    }
+
+    impl Miniserver {
+        pub fn new(addr: String) -> Self {
+            Self { addr }
+        }
+        // fn new here is an associated function of Miniserver
+
+        pub fn run(self) {
+            println!("Running server at {}", self.addr);
+        }
+        //self in rust works as this in other languages, it holds the ownership of the struct
+        // we will use self instead of &self because we want to take ownership of the struct
+    }
 }
 
-impl Miniserver{
-    fn new(addr: String) -> Self {
-        Self {
-            addr
+mod http {
+    pub mod request {
+        use super::method::Method;
+        #[allow(dead_code)]
+        pub struct Request {
+            path: String,
+            query_string: Option<String>,
+            method: Method,
         }
     }
-    // fn new here is an associated function of Miniserver
-
-    fn run(self) {
-        println!("Running server at {}", self.addr);
+    pub mod method {
+        pub enum Method {
+            GET,
+            POST,
+            PUT,
+            DELETE,
+            PATCH,
+            HEAD,
+            OPTIONS,
+            TRACE,
+            CONNECT,
+        }
     }
-    //self in rust works as this in other languages, it holds the ownership of the struct
-    // we will use self instead of &self because we want to take ownership of the struct
 }
-
-struct Request {
-    path: String,
-    query_string: Option<String>,
-    method: Method,
-}
-
-enum Method {
-    GET,
-    POST,
-    PUT,
-    DELETE,
-    PATCH,
-    HEAD,
-    OPTIONS,   
-    TRACE,
-    CONNECT
-}
-    
-
-
