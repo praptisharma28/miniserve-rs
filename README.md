@@ -30,3 +30,13 @@ pub enum Option<T> {
 }
 
 now we know how to express null values without the fear of null pointer exceptions
+
+- the result enum
+
+rust groups error in 2 categories recoverable and unrecoverable errors
+rust doesnt support exceptions, instead it has result enum for handling recoverable errors
+
+pub enum Result<T, E>{
+    OK(T),
+    Err(E),
+}
