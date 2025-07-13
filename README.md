@@ -40,3 +40,7 @@ pub enum Result<T, E>{
     OK(T),
     Err(E),
 }
+
+
+- the match expression
+to make working with enums more powerfl and convenient, ruust has a special control flow operator called match, it allows you to compare a vlauue against a series of patterns and then execute code based on which pattern matches.
