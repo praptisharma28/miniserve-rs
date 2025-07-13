@@ -20,4 +20,10 @@ pub struct Miniserver {
         //self in rust works as this in other languages, it holds the ownership of the struct
         // we will use self instead of &self because we want to take ownership of the struct
         let listener = TcpListener::bind(&self.addr).unwrap();
+
+        loop {
+            listener.accept();
+        }
+
+        // let tup = (5, "a", listener);
 }
