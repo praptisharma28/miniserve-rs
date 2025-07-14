@@ -1,4 +1,7 @@
 use std::io::Read;
+use crate::http::Request;
+use std::convert::TryFrom;
+use std::convert::TryInto;
 use std::net::TcpListener;
 
 /// A simple miniserver that listens on a specified address.
@@ -30,6 +33,15 @@ impl Miniserver {
                     match stream.read(&mut buffer) {
                         Ok(_) => {
                             println!("Received a request: {}", String::from_utf8_lossy(&buffer));
+                            match Request::try_from(&buffer[..]){
+                                Ok(request) => {
+                                    println!("Parsed request: {:?}", request);
+                                    // Here you can handle the request further
+                                }
+                                Err(e) => println!("Failed to parse request: {}", e),
+                            }
+                            // let res: &Result<Request,  > = &buffer[..].try_into();
+                            //these are the two ways we can call our new conversion function
                         }
                         Err(e) => println!("Failed to read from stream: {}", e),
                     }

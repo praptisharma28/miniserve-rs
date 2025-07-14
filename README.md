@@ -48,3 +48,24 @@ to make working with enums more powerfl and convenient, ruust has a special cont
 - to test : 
 printf '\x80\x81\x82\x83' | nc 127.0.0.1 8080
 cho "/7436p@bjh TEST" | nc 127.0.0.1 8080
+
+- why traits in rust are powerful because we can literally do this:
+
+trait Encrypt{
+    fn encrypt(&self) -> Self;
+}
+
+impl Encrypt for String{
+    fn encrypt(&self) -> Self{
+        unimplemented!()
+    }
+}
+
+impl Encrypt for &[u8]{
+    fn encrypt(&self) -> Self{
+        unimplemented!()
+    }
+}
+
+how cool is that, hence traits are powerful in rust
+
