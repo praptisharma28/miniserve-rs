@@ -44,3 +44,7 @@ pub enum Result<T, E>{
 
 - the match expression
 to make working with enums more powerfl and convenient, ruust has a special control flow operator called match, it allows you to compare a vlauue against a series of patterns and then execute code based on which pattern matches.
+
+- to test : 
+printf '\x80\x81\x82\x83' | nc 127.0.0.1 8080
+cho "/7436p@bjh TEST" | nc 127.0.0.1 8080
