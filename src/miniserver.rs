@@ -1,4 +1,5 @@
 use std::net::TcpListener;
+use std::io::Read;
 
     /// A simple miniserver that listens on a specified address.
     ///
@@ -7,6 +8,9 @@ use std::net::TcpListener;
 pub struct Miniserver {
         addr: String,
     }
+    
+// let arr: [u8; 5] = [1, 2, 3, 4, 5];
+
 
     impl Miniserver {
         pub fn new(addr: String) -> Self {
@@ -24,8 +28,8 @@ pub struct Miniserver {
         loop {
             match listener.accept(){
                 Ok((stream, _)) => {
-                    let a = 5;
-                    println!("Ok");
+                    let mut buffer = [0; 1024];
+                    stream.read(&mut buffer);
                 }
                 Err(e) => println!("Failed to establish a connection: {}", e),
             }
