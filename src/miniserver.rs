@@ -35,8 +35,6 @@ impl Miniserver {
                             println!("Received a request: {}", String::from_utf8_lossy(&buffer));
                             match Request::try_from(&buffer[..]){
                                 Ok(request) => {
-                                    println!("Parsed request: {:?}", request);
-                                    // Here you can handle the request further
                                 }
                                 Err(e) => println!("Failed to parse request: {}", e),
                             }
