@@ -1,2 +1,2 @@
 # miniserve-rs
-A minimal multi-threaded server written in rust.
+A minimal multi-threaded web server written in rust.
